@@ -28,6 +28,8 @@ const readline = require('readline-sync');
 
 const hasTorch = true;
 const hasMap = false;
+const hasSword = false;
+const hasCompass = true;
 
 console.log("You see two paths: one leads to the mountains, the other to the village.");
 const choice = readline.question("Do you go to the 'mountains' or the 'village'?");
@@ -36,12 +38,28 @@ if (choice === "mountains" && hasTorch) {
   console.log("You safely navigate through the dark mountains.");
 } else if (choice === "mountains" && !hasTorch) {
   console.log("It's too dark to proceed. You decide to turn back.");
-} else if (choice === "village" || hasMap) {
-  console.log("You find your way to the village.");
+} else if (choice === "village" && hasMap) {
+  console.log("You find your way to the village using your map.");
+} else if (choice === "village" && !hasMap) {
+  console.log("Without a map, you get lost and wander in circles.");
 } else {
-  console.log("You get lost and wander aimlessly.");
+  console.log ("You decide to stay where you are.");
 }
 
+console.log("You encounter a wild animal on your journey.");
+const action = readline.question("Do you want to fight with a 'sword' or run with a 'compass'?");
+
+if (action === "sword" && hasSword) {
+  console.log("You fight the wild animal and win with your sword!");
+} else if (action === "sword" && !hasSword) {
+  console.log("You don't have a sword! The wild animal overwhelms you.");
+} else if (action === "compass" && hasCompass) {
+  Cconsole.log("You use the compass to find a safe escape route.");
+} else if (action === "compass" && !hasCompass) {
+  console.log("Without a compass, you get lost and are surrounded by danger.");
+} else {
+  console.log("You stand still, unsure of what to do.");
+ }
 /* 
 
 Add Customization and expand the game:
